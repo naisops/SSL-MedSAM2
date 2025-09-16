@@ -80,6 +80,7 @@ insert_mod = custom_config.insert_mod
 
 ## --- 0. Define saving dirs
 data_str = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+# The path to save ensembled predictions
 save_npz_dir = f'/home/psxzg6/pred_npz/CARE2025/{vendor}/{sequence}/{random_mix_method_name}/run_{run_part}_{data_str}'
 if random_mix_method_name == 'random_whole_insert':
     save_npz_dir = f'/home/psxzg6/pred_npz/CARE2025/{vendor}/{sequence}/{random_mix_method_name}_{insert_mod}/run_{run_part}_{data_str}'
@@ -190,4 +191,5 @@ for sample_un in unlabelled_dataset:
     Path(save_npz_dir).mkdir(parents=True, exist_ok=True)
 
 print(f'all logits are saved to {save_npz_dir}, all preds are saved to {save_pred_dir}, all uncert are saved to {save_uncert_dir}')
+
         
