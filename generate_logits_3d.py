@@ -108,7 +108,8 @@ img_path_dict_la = get_objs_and_paths(labelled_objs,condition_care_ged4, root_di
 
 # get path dict for unlabelled image data
 root_dir_un = os.path.join('/home/psxzg6/datasets/CARE2025/', vendor)
-unlabelled_objs = sorted([obj for obj in os.listdir(root_dir_un) if obj not in labelled_objs])
+total_obj = [obj.replace('.nii.gz','') for obj in os.listdir(root_dir_un)]
+unlabelled_objs = sorted([obj for obj in total_obj if obj not in labelled_objs])
 img_path_dict_un = get_objs_and_paths(unlabelled_objs, seq_cond[sequence], root_dir_un)
 
 # divide the unlabelled set to several parts for efficient processing
@@ -192,4 +193,5 @@ for sample_un in unlabelled_dataset:
 print(f'all logits are saved to {save_npz_dir}, all preds are saved to {save_pred_dir}, all uncert are saved to {save_uncert_dir}')
 
         
+
 
